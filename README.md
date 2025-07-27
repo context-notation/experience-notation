@@ -153,47 +153,17 @@ See the `LICENSE` file for the full text.
 
 ---
 
-## Contact & Support
+### Maintainer
 
-For questions, support, or to report issues, please use the **GitHub Issues** section of this repository.
+The schema was authored by **Nikolaos Maniatis** and is maintained and distributed by **The Cato Bot Company Limited**.
 
----
+For questions, support, or to report issues, please use the **[GitHub Issues](https://github.com/context-notation/experience-notation-schema/issues/new)** section of this repository.
 
-To properly include citations in your GitHub repository, follow these best practices:
-
----
-
-### ✅ 1. **Add a `CITATION.cff` File (for GitHub’s citation support)**
-
-GitHub supports citations natively using the `CITATION.cff` file at the root of your repo. This enables an automatic “Cite this repository” button.
-
-Create a file named `CITATION.cff` in the root of your repository with the following content:
-
-```yaml
-cff-version: 1.2.0
-message: "If you use Experience Notation in your research, please cite the following:"
-title: "Experience Notation"
-version: "1.1.0"
-doi: "10.5281/zenodo.1234567"  # Optional – if you register with Zenodo
-date-released: 2025-07-27
-authors:
-  - family-names: Maniatis
-    given-names: Nikolaos
-    affiliation: The Cato Bot Company Limited
-license: Apache-2.0
-url: https://github.com/context-notation/experience-notation
-repository-code: https://github.com/context-notation/experience-notation
-```
-
-> 🔸**Tip**: If you want to mint a DOI, connect your GitHub repo to [Zenodo](https://zenodo.org/) and update the DOI field accordingly.
+For commercial enquiries, long-term support, or integration partnerships, please contact:
+📧 **[schemas@context-notation.com](mailto:schemas@context-notation.com)**
 
 ---
 
-### ✅ 2. **Add Citation Section to `README.md`**
-
-Paste this under a `## Citation` heading in your `README.md`:
-
-````markdown
 ## Citation
 
 If you use the Experience Notation DSL in academic work, please cite:
