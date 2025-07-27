@@ -1,0 +1,49 @@
+# Experience Notation Example: Simple User Onboarding Journey
+# This document defines a basic, linear user journey for new user registration and first login.
+# It demonstrates the fundamental structure of Events and Steps.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Simple User Onboarding
+Journey-Description: A basic journey for new user registration and first login, focusing on the core flow.
+
+# --- Event 1: Account Creation ---
+# An Event represents a major phase or checkpoint in the user's journey.
+Event: Account Creation
+  ID: EVT-001 # Unique identifier for this event.
+  # Tags can be used for categorization or filtering.
+  Tag: Onboarding, Registration
+
+  # --- Step 1.1: User Registration ---
+  # A Step defines a granular action or interaction within an event.
+  Step: User Registration
+    User: New User # The persona or actor performing the action.
+    Action: Fills out registration form # What the user does.
+    UI-Element: Registration Page # The interface element involved.
+
+  # --- Step 1.2: Email Verification ---
+  Step: Email Verification
+    User: New User
+    Action: Clicks verification link in email
+    UI-Element: Email Client, Verification Page # Multiple UI elements can be listed.
+
+# --- Event 2: First Login ---
+Event: First Login
+  ID: EVT-002
+  Tag: Onboarding, Login
+
+  # --- Step 2.1: Initial Login ---
+  Step: Initial Login
+    User: Registered User
+    Action: Enters credentials and logs in
+    UI-Element: Login Page
+
+  # --- Persona (Inline): Excited New User ---
+  # Personas can be defined inline within an event or step to describe their specific experience
+  # at that point in the journey.
+  Persona: Excited New User
+    Experience: Feels welcomed and guided by the clear instructions.
+    Interaction: Engages positively with the user interface, finding it intuitive.
+    Adaptation: Quickly adapts to the new system, eager to explore features.
+    Metrics: {"satisfaction": 8, "easeOfUse": "High", "onboardingTimeMinutes": 5} # Quantifiable data.
+    Meta: {"onboardingChannel": "Organic Search"} # Arbitrary key=value metadata.

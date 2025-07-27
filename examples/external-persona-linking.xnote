@@ -1,0 +1,69 @@
+# Experience Notation Example: External Persona Linking Journey
+# This document demonstrates how to link persona definitions from external sources
+# using the 'External-Source' property, promoting centralized persona management.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Customer Profile Update
+Journey-Description: A journey where a user updates their profile, referencing an externally managed persona.
+
+# --- Global Persona: Existing Customer ---
+# This persona's full details (experience, interaction, metrics, etc.) are assumed
+# to be managed at the specified external URI. The 'Persona:' line here provides a
+# local name/identifier for use within this xnote document.
+Persona: Existing Customer
+  ID: P-EXT-CUST
+  External-Source: https://my-company.com/personas/existing-customer-v2.json
+  # No other details like Experience, Metrics are defined here, as they come from the external source.
+  Comments: This persona's detailed profile is maintained in our central persona repository.
+
+# --- Global Persona: Admin User ---
+Persona: Admin User
+  ID: P-ADMIN
+  External-Source: https://my-company.com/personas/admin-user-profile.json
+  Comments: This persona represents an administrator, defined externally.
+
+# --- Event 1: Profile Access ---
+Event: Profile Access
+  ID: EVT-PROFILE-ACCESS
+  Tag: Account, Settings
+
+  Step: Navigate to Profile
+    User: Existing Customer # Referencing the global external persona.
+    Action: Clicks 'Edit Profile'
+    UI-Element: User Dashboard
+
+# --- Event 2: Data Update ---
+Event: Data Update
+  ID: EVT-DATA-UPDATE
+  Tag: Account, Data Entry
+
+  Step: Modify Personal Information
+    User: Existing Customer
+    Action: Changes email address and phone number
+    UI-Element: Profile Settings Form
+
+  # --- Persona (Inline): Data-Conscious Customer ---
+  # An inline persona can also reference an external source.
+  # This implies that the details for 'Data-Conscious Customer' are external.
+  Persona: Data-Conscious Customer
+    Persona: P-EXT-CUST # This inline persona is an instance of the global 'Existing Customer'.
+    External-Source: https://my-company.com/personas/data-conscious-customer-profile.json
+    Experience: Feels a strong need for data privacy and security during updates.
+    Comments: This specific instance highlights data privacy concerns, pulling its base from an external source.
+
+  Step: Save Changes
+    User: Existing Customer
+    Action: Submits updated profile
+    UI-Element: Profile Settings Form
+
+# --- Event 3: Admin Review (Optional, if applicable) ---
+Event: Admin Review
+  ID: EVT-ADMIN-REVIEW
+  Tag: Admin, Workflow
+  Comments: This event might occur if certain profile changes require administrative approval.
+
+  Step: Review Pending Changes
+    User: Admin User # Referencing the global external admin persona.
+    Action: Accesses admin panel to review profile updates
+    UI-Element: Admin Dashboard

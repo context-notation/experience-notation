@@ -1,0 +1,48 @@
+# Experience Notation Example: User Decision Flow Journey
+# This document illustrates how to use conditional logic within a step to represent branching paths.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Product Purchase Decision
+Journey-Description: A journey outlining a user's decision process for purchasing a product, including a conditional path for payment.
+
+# --- Event 1: Product Selection ---
+Event: Product Selection
+  ID: EVT-SELECT
+  Tag: Sales, E-commerce
+
+  Step: Browse Products
+    User: Potential Customer
+    Action: Navigates through product categories
+    UI-Element: Product Listing Page
+
+  Step: Add to Cart
+    User: Potential Customer
+    Action: Adds selected item to shopping cart
+    UI-Element: Product Detail Page, Shopping Cart Icon
+
+# --- Event 2: Checkout Process ---
+Event: Checkout Process
+  ID: EVT-CHECKOUT
+  Tag: Sales, Payment
+
+  # --- Step 2.1: Initiate Checkout ---
+  Step: Initiate Checkout
+    User: Potential Customer
+    Action: Proceeds to checkout
+    UI-Element: Shopping Cart Page
+
+  # --- Step 2.2: Payment Method Selection (with Conditional Logic) ---
+  # This step includes a conditional block that dictates the next action based on the user's payment choice.
+  Step: Payment Method Selection
+    User: Potential Customer
+    Action: Selects preferred payment method
+    UI-Element: Payment Options Page
+    Conditional: IF User selects 'Credit Card' THEN Redirect to Credit Card Form ELSE IF User selects 'PayPal' THEN Redirect to PayPal Login ELSE Display Error Message
+    # The 'text' in IF/THEN/ELSE can describe the condition and action.
+
+  # --- Step 2.3: Order Confirmation ---
+  Step: Order Confirmation
+    User: Customer
+    Action: Reviews order and confirms purchase
+    UI-Element: Order Summary Page

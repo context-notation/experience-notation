@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/experience-notation-journey.json",
+  "title": "Experience Notation Document",
+  "description": "A structured journey definition using the Experience Notation (xnote) format, conforming to EBNF Version 1.1 and JSON Schema Draft 2020-12.",
+  "type": "object",
+  "properties": {
+    "ebnfVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "The version of the Experience Notation grammar this document conforms to (e.g., '1.1'). Corresponds to 'grammar_version' in EBNF."
+    },
+    "syntaxVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "The version of the Experience Notation syntax used in this journey (e.g., '1.0'). Corresponds to 'Syntax-Version' in EBNF header."
+    },
+    "journeyTitle": {
+      "type": "string",
+      "pattern": "^[^\n\r]*$",
+      "description": "A concise and descriptive name for the journey. Corresponds to 'Journey-Title' in EBNF header."
+    },
+    "journeyDescription": {
+      "type": "string",
+      "pattern": "^[^\n\r]*$",
+      "description": "An overview of the journey's purpose, scope, and context. Corresponds to 'Journey-Description' in EBNF header."
+    },
+    "events": {
+      "type": "array",
+      "description": "A list of events (major checkpoints or phases) in the journey. Corresponds to 'event' in EBNF.",
+      "items": {
+        "$ref": "#/$defs/event"
+      },
+      "minItems": 0
+    },
+    "personas": {
+      "type": "array",
+      "description": "A list of global persona definitions relevant across the journey. Corresponds to 'persona_global' in EBNF.",
+      "items": {
+        "$ref": "#/$defs/personaGlobal"
+      },
+      "minItems": 0
+    },
+    "comments": {
+      "type": "array",
+      "description": "Top-level comments about the journey document. Corresponds to 'comment' in EBNF.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "ebnfVersion",
+    "syntaxVersion",
+    "journeyTitle",
+    "journeyDescription",
+    "events"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$",
+      "description": "Unique identifier matching EBNF 'identifier' syntax (alpha, then alpha/digit/_)."
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Structured experience metrics in key=value format. Corresponds to 'metrics' in EBNF.",
+      "patternProperties": {
+        "^[a-zA-Z][a-zA-Z0-9_]*$": {
+          "description": "Metric value, can be a string, number, or boolean.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
+    "meta": {
+      "type": "object",
+      "description": "Arbitrary metadata in key=value format. Corresponds to 'meta_line' in EBNF.",
+      "patternProperties": {
+        "^[a-zA-Z][a-zA-Z0-9_]*$": {
+          "type": "string",
+          "description": "Metadata value, always a string."
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
+    "conditional": {
+      "type": "object",
+      "description": "Conditional logic for branching. Corresponds to 'conditional' in EBNF.",
+      "properties": {
+        "if": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "The condition to evaluate. Corresponds to 'IF text' in EBNF."
+        },
+        "then": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Action to take when condition is true. Corresponds to 'THEN text' in EBNF."
+        },
+        "else": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Optional action when condition is false. Corresponds to 'ELSE text' in EBNF."
+        },
+        "comments": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Comments associated with this conditional block."
+        }
+      },
+      "required": [
+        "if",
+        "then"
+      ],
+      "additionalProperties": false
+    },
+    "personaCommonProperties": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this persona. Corresponds to 'id_line' in EBNF.",
+          "$ref": "#/$defs/identifier"
+        },
+        "experience": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Narrative description of how the persona experiences. Corresponds to 'Experience' in EBNF."
+        },
+        "interaction": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Narrative description of how the persona interacts. Corresponds to 'Interaction' in EBNF."
+        },
+        "adaptation": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Narrative description of how the persona adapts. Corresponds to 'Adaptation' in EBNF."
+        },
+        "metrics": {
+          "description": "Structured metrics for the persona. Corresponds to 'Metrics' in EBNF.",
+          "$ref": "#/$defs/metrics"
+        },
+        "meta": {
+          "description": "Arbitrary metadata for the persona. Corresponds to 'Meta' in EBNF.",
+          "$ref": "#/$defs/meta"
+        },
+        "references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/identifier" },
+          "minItems": 1,
+          "description": "References to other elements by their ID. Corresponds to 'Ref' in EBNF."
+        },
+        "externalSource": {
+          "type": "string",
+          "format": "uri",
+          "description": "Specifies an external URI or identifier for a persona definition. Corresponds to 'External-Source' in EBNF."
+        },
+        "comments": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Comments associated with this persona definition."
+        }
+      },
+      "additionalProperties": false
+    },
+    "personaGlobal": {
+      "type": "object",
+      "description": "A globally defined persona. Corresponds to 'persona_global' in EBNF.",
+      "allOf": [
+        { "$ref": "#/$defs/personaCommonProperties" },
+        {
+          "properties": {
+            "persona": {
+              "type": "string",
+              "pattern": "^[^\n\r]*$",
+              "description": "Name or identifier of this global persona. Corresponds to 'Persona: text' in EBNF."
+            }
+          },
+          "required": ["persona"]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "personaInline": {
+      "type": "object",
+      "description": "An inline persona relevant to a specific event or step. Corresponds to 'persona_block' in EBNF.",
+      "allOf": [
+        { "$ref": "#/$defs/personaCommonProperties" },
+        {
+          "properties": {
+            "persona": {
+              "type": "string",
+              "pattern": "^[^\n\r]*$",
+              "description": "Name or identifier of the persona. Corresponds to 'Persona: text' in EBNF."
+            }
+          },
+          "required": ["persona"]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "step": {
+      "type": "object",
+      "description": "A sequence within an event. Corresponds to 'step' in EBNF.",
+      "properties": {
+        "step": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "The title or description of this step. Corresponds to 'Step: text' in EBNF."
+        },
+        "id": {
+          "description": "Unique identifier for this step. Corresponds to 'id_line' in EBNF.",
+          "$ref": "#/$defs/identifier"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Tags categorizing this step (translated from CSV). Corresponds to 'Tag: csv(identifier)' in EBNF."
+        },
+        "user": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "The user or actor performing this step. Corresponds to 'User: text' in EBNF."
+        },
+        "action": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "What the user/system does in this step. Corresponds to 'Action: text' in EBNF."
+        },
+        "uiElement": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Specifies the part of the interface involved in the step. Corresponds to 'UI-Element: text' in EBNF."
+        },
+        "conditional": {
+          "description": "Conditional logic for this step. Corresponds to 'conditional' in EBNF.",
+          "$ref": "#/$defs/conditional"
+        },
+        "references": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "References to other elements by their ID. Corresponds to 'Ref' in EBNF."
+        },
+        "comments": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Comments associated with this step."
+        },
+        "personas": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/personaInline" },
+          "description": "List of inline personas associated with this step. Corresponds to 'persona_block' in EBNF."
+        }
+      },
+      "required": ["step", "user", "action"],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "description": "A major checkpoint or phase in the journey. Corresponds to 'event' in EBNF.",
+      "properties": {
+        "event": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "The title or name of this event. Corresponds to 'Event: text' in EBNF."
+        },
+        "id": {
+          "description": "Unique identifier for this event. Corresponds to 'id_line' in EBNF.",
+          "$ref": "#/$defs/identifier"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "A list of tags (translated from CSV format in the EBNF). Corresponds to 'tag_line' in EBNF."
+        },
+        "environmentalFactors": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Contextual factors that affect this event. Corresponds to 'Environmental-Factors' in EBNF."
+        },
+        "parallelEvents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Lists other events that occur concurrently with this one (translated from CSV). Corresponds to 'Parallel-Events' in EBNF."
+        },
+        "disruption": {
+          "type": "string",
+          "pattern": "^[^\n\r]*$",
+          "description": "Any interruption, exception, or breakdown occurring in this event. Corresponds to 'Disruption' in EBNF."
+        },
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/step" },
+          "description": "Sequential steps that make up this event. Corresponds to 'step' in EBNF."
+        },
+        "conditional": {
+          "description": "Conditional logic for this event. Corresponds to 'conditional' in EBNF.",
+          "$ref": "#/$defs/conditional"
+        },
+        "references": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "References to other elements by their ID. Corresponds to 'Ref' in EBNF."
+        },
+        "comments": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Comments associated with this event."
+        },
+        "personas": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/personaInline" },
+          "description": "List of inline personas associated with this event. Corresponds to 'persona_block' in EBNF."
+        }
+      },
+      "required": ["event"],
+      "additionalProperties": false
+    }
+  }
+}

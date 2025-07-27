@@ -1,0 +1,62 @@
+# Experience Notation Example: Data-Rich Journey
+# This document showcases the use of 'Metrics' for quantifiable data and 'Meta' for arbitrary metadata,
+# enhancing the analytical depth and contextual understanding of the journey.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Online Course Completion Analysis
+Journey-Description: Analyzing a user's journey through an online course, focusing on performance and contextual data.
+
+# --- Global Persona: Dedicated Learner ---
+Persona: Dedicated Learner
+  ID: P-LEARNER
+  Experience: Highly motivated to complete courses and gain new skills.
+  Metrics: {"averageCompletionRate": 0.85, "preferredLearningPace": "Fast", "engagementScore": 9.2}
+  Meta: {"demographic": "Young Professional", "learningStyle": "Visual"}
+
+# --- Event 1: Course Enrollment ---
+Event: Course Enrollment
+  ID: EVT-ENROLL
+  Tag: Enrollment, Start
+  Comments: This event captures the initial phase of a learner joining a course.
+
+  Step: Browse Courses
+    User: P-LEARNER
+    Action: Searches for relevant courses
+    UI-Element: Course Catalog
+    Metrics: {"searchDurationSeconds": 30, "coursesViewed": 5}
+    Meta: {"entryPoint": "Homepage Banner"}
+
+  Step: Complete Enrollment Form
+    User: P-LEARNER
+    Action: Fills out personal and payment details
+    UI-Element: Enrollment Form
+    Metrics: {"formCompletionTimeSeconds": 120, "paymentSuccess": true}
+    Meta: {"paymentGateway": "Stripe"}
+
+# --- Event 2: Module 1 Completion ---
+Event: Module 1 Completion
+  ID: EVT-MOD1
+  Tag: Progress, Learning
+  Environmental-Factors: Quiet study environment, Stable internet connection.
+
+  Step: Watch Lecture Videos
+    User: P-LEARNER
+    Action: Views all lecture videos for Module 1
+    UI-Element: Video Player
+    Metrics: {"videosWatched": 3, "totalLectureTimeMinutes": 45}
+    Meta: {"contentFormat": "Video"}
+
+  Step: Pass Quiz
+    User: P-LEARNER
+    Action: Takes and passes the Module 1 quiz
+    UI-Element: Quiz Interface
+    Metrics: {"quizScore": 92, "attempts": 1, "timeToCompleteQuizMinutes": 10}
+    Meta: {"quizDifficulty": "Medium"}
+
+  # --- Persona (Inline): Engaged Learner ---
+  Persona: Engaged Learner
+    Persona: P-LEARNER
+    Experience: Feels a sense of accomplishment and understanding after the module.
+    Metrics: {"satisfactionPostModule": 9, "knowledgeRetention": 0.8}
+    Comments: Captures the learner's state immediately after completing a module.

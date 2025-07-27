@@ -1,0 +1,82 @@
+# Experience Notation Example: Modular Journey with Tags and References
+# This document illustrates the use of 'Tag' for categorization and 'Ref' for linking elements
+# by their unique IDs within the same document, enhancing modularity and navigation.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Software Installation & Setup
+Journey-Description: A journey describing the process of installing software, using tags for categorization
+  and references to link related steps or events.
+
+# --- Global Persona: New User ---
+Persona: New User
+  ID: P-NEW-USER
+  Experience: Needs clear instructions and minimal technical hurdles.
+  Interaction: Follows prompts carefully.
+  Adaptation: Easily frustrated by unclear error messages.
+
+# --- Event 1: Download Software ---
+Event: Download Software
+  ID: EVT-DOWNLOAD
+  Tag: Installation, InitialSetup, Software
+  Comments: This event covers obtaining the software installer.
+
+  Step: Access Download Page
+    User: P-NEW-USER
+    Action: Navigates to the official download page
+    UI-Element: Website
+
+  Step: Initiate Download
+    User: P-NEW-USER
+    Action: Clicks the download button for the installer
+    UI-Element: Download Button
+    Metrics: {"downloadSizeMB": 250, "estimatedTimeSeconds": 60}
+
+# --- Event 2: Installation Process ---
+Event: Installation Process
+  ID: EVT-INSTALL
+  Tag: Installation, CoreProcess, Software
+  Comments: This event details the actual software installation.
+
+  Step: Run Installer
+    User: P-NEW-USER
+    Action: Double-clicks the downloaded installer file
+    UI-Element: File Explorer
+    Ref: EVT-DOWNLOAD # Reference back to the download event.
+
+  Step: Accept License Agreement
+    User: P-NEW-USER
+    Action: Reads and accepts the End User License Agreement (EULA)
+    UI-Element: EULA Dialog
+    Ref: STEP-EULA-ACCEPT # Reference to a specific step ID defined later (or elsewhere).
+
+  Step: Choose Installation Path
+    User: P-NEW-USER
+    Action: Selects installation directory
+    UI-Element: Installation Wizard
+    ID: STEP-INSTALL-PATH # Assigning an ID to this step for potential future references.
+
+# --- Event 3: First Launch & Configuration ---
+Event: First Launch & Configuration
+  ID: EVT-LAUNCH-CONFIG
+  Tag: PostInstallation, Setup, Configuration
+  Comments: This event covers the initial launch and basic setup after installation.
+
+  Step: Launch Application
+    User: P-NEW-USER
+    Action: Opens the newly installed application
+    UI-Element: Desktop Icon, Start Menu
+    Ref: EVT-INSTALL # Reference back to the installation event.
+
+  Step: Initial Configuration Wizard
+    User: P-NEW-USER
+    Action: Follows on-screen wizard for initial setup (e.g., language, preferences)
+    UI-Element: Configuration Wizard
+    ID: STEP-CONFIG-WIZARD # Another step ID for referencing.
+
+  Step: EULA Acceptance Details # This step is referenced from EVT-INSTALL.
+    ID: STEP-EULA-ACCEPT
+    User: System # Can be a system action
+    Action: Records EULA acceptance status
+    Meta: {"eulaVersion": "1.2", "acceptanceTimestamp": "2025-07-27T10:30:00Z"}
+    Comments: This step is referenced by ID from the 'Installation Process' event.

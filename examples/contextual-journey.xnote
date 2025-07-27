@@ -1,0 +1,70 @@
+# Experience Notation Example: Contextual Journey
+# This document illustrates the use of 'Environmental-Factors' to describe external context
+# and 'Disruption' to highlight unexpected interruptions within a journey event.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Mobile Banking Transaction
+Journey-Description: A user's journey performing a mobile banking transaction, considering external influences and potential issues.
+
+# --- Global Persona: Busy Commuter ---
+Persona: Busy Commuter
+  ID: P-COMMUTER
+  Experience: Needs quick, reliable service, often multitasking.
+  Interaction: Prefers mobile apps for convenience.
+  Adaptation: Easily frustrated by delays or technical glitches when time-constrained.
+  Metrics: {"timePressureTolerance": "Low", "mobileAppUsageFrequency": "Daily"}
+  Meta: {"device": "Smartphone", "network": "Mobile Data"}
+
+# --- Event 1: Initiating Transfer ---
+Event: Initiating Transfer
+  ID: EVT-INIT-TRANSFER
+  Tag: Banking, Mobile, Transaction
+  Environmental-Factors: Public Wi-Fi, Crowded train, Low battery. # External conditions affecting the experience.
+  Comments: This event occurs while the user is on their commute.
+
+  Step: Open Banking App
+    User: P-COMMUTER
+    Action: Launches the mobile banking application
+    UI-Element: App Icon
+
+  Step: Select Transfer Option
+    User: P-COMMUTER
+    Action: Navigates to the funds transfer section
+    UI-Element: Main Menu, Transfer Button
+
+# --- Event 2: Completing Transaction ---
+Event: Completing Transaction
+  ID: EVT-COMPLETE-TRANSACTION
+  Tag: Banking, Mobile, Transaction
+  Disruption: Intermittent network signal loss, App crash due to memory error. # Unexpected issues during the event.
+  Comments: This event is where the actual transaction takes place, prone to disruptions.
+
+  Step: Enter Transfer Details
+    User: P-COMMUTER
+    Action: Inputs recipient, amount, and reference
+    UI-Element: Transfer Form
+
+  Step: Authorize Transaction
+    User: P-COMMUTER
+    Action: Verifies details and confirms with biometric authentication
+    UI-Element: Confirmation Screen, Biometric Prompt
+
+  # --- Persona (Inline): Stressed Commuter ---
+  Persona: Stressed Commuter
+    Persona: P-COMMUTER
+    Experience: Becomes highly stressed and anxious due to slow loading and app unresponsiveness.
+    Interaction: Repeatedly taps buttons, checks network signal.
+    Adaptation: Considers abandoning the transaction and trying later, or switching to desktop.
+    Metrics: {"stressLevel": 8, "abandonmentRisk": 0.6}
+    Comments: Highlights the impact of environmental factors and disruption on the user's state.
+
+# --- Event 3: Transaction Confirmation ---
+Event: Transaction Confirmation
+  ID: EVT-CONFIRM
+  Tag: Banking, Mobile, Success
+
+  Step: Receive Confirmation
+    User: P-COMMUTER
+    Action: Views transaction success message
+    UI-Element: Confirmation Screen, Push Notification

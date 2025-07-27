@@ -1,0 +1,62 @@
+# Experience Notation Example: Persona Showcase Journey
+# This document demonstrates defining personas both globally (top-level) and inline (within events/steps),
+# showcasing their detailed attributes like experience, interaction, adaptation, metrics, and metadata.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Customer Support Experience
+Journey-Description: A journey detailing how different customer personas interact with support channels.
+
+# --- Global Persona 1: Tech-Savvy User ---
+# Global personas are defined at the top level and can be referenced throughout the journey.
+Persona: Tech-Savvy User
+  ID: P-TECH
+  Experience: Prefers self-service and quick resolutions.
+  Interaction: Seeks online documentation, forums, and chat bots first.
+  Adaptation: Easily learns new interfaces and troubleshooting steps.
+  Metrics: {"techProficiency": "High", "avgResolutionTimePreferenceMinutes": 5}
+  Meta: {"segment": "Early Adopter"}
+
+# --- Global Persona 2: Novice User ---
+Persona: Novice User
+  ID: P-NOVICE
+  Experience: Needs clear, step-by-step guidance and human assistance.
+  Interaction: Prefers phone support or in-person help.
+  Adaptation: Can be frustrated by complex systems or technical jargon.
+  Metrics: {"techProficiency": "Low", "patienceLevel": "Medium"}
+  Meta: {"segment": "Mainstream"}
+
+# --- Event 1: Initial Problem Identification ---
+Event: Initial Problem Identification
+  ID: EVT-PROBLEM
+  Tag: Support, Discovery
+
+  Step: Identify Issue
+    User: P-TECH # Referencing the global persona by its ID.
+    Action: Encounters a software bug
+    UI-Element: Application Interface
+
+  # --- Persona (Inline): Frustrated Novice ---
+  # An inline persona provides specific details about a persona's state or behavior
+  # within the context of this particular event.
+  Persona: Frustrated Novice
+    Persona: P-NOVICE # This inline persona is an instance of the global Novice User.
+    Experience: Feels overwhelmed and confused by the error message.
+    Interaction: Immediately searches for a phone number for support.
+    Adaptation: Becomes more anxious with each failed attempt to self-resolve.
+    Metrics: {"frustrationLevel": 9, "timeSpentSearchingMinutes": 15}
+    Comments: This persona instance highlights the immediate emotional impact on a novice user.
+
+# --- Event 2: Seeking Resolution ---
+Event: Seeking Resolution
+  ID: EVT-RESOLUTION
+  Tag: Support, Action
+
+  Step: Access Support Channel
+    User: P-TECH
+    Action: Opens the in-app chat support
+    UI-Element: Chat Widget
+  Step: Contact Support
+    User: P-NOVICE
+    Action: Calls the customer service hotline
+    UI-Element: Phone

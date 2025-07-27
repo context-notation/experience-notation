@@ -1,0 +1,121 @@
+# Experience Notation Example: Comprehensive Customer Support Journey
+# This document showcases a complex user journey involving multiple personas,
+# conditional logic, metrics, metadata, and external persona references,
+# demonstrating the full expressive power of Experience Notation.
+
+EBNF-Version: 1.1
+Syntax-Version: 1.0
+Journey-Title: Advanced Customer Support Resolution
+Journey-Description: A detailed journey of a customer seeking support for a complex issue,
+  involving self-service, agent interaction, and potential escalations.
+
+# --- Global Persona 1: Frustrated Customer ---
+Persona: Frustrated Customer
+  ID: P-FRUSTRATED
+  Experience: Already tried self-help, seeking quick resolution.
+  Interaction: Prefers direct human contact, but will try chat if available.
+  Adaptation: Patience decreases rapidly with each failed attempt.
+  Metrics: {"initialFrustrationLevel": 7, "techLiteracy": "Medium"}
+  Meta: {"customerTier": "Standard"}
+
+# --- Global Persona 2: Support Agent ---
+Persona: Support Agent
+  ID: P-AGENT
+  External-Source: https://support-org.com/personas/tier1-agent-profile.json
+  Comments: Detailed profile for a Tier 1 support agent, managed externally.
+
+# --- Event 1: Issue Discovery & Initial Self-Service ---
+Event: Issue Discovery & Initial Self-Service
+  ID: EVT-ISSUE-DISC
+  Tag: SelfService, ProblemIdentification
+  Environmental-Factors: Home environment, Desktop computer.
+  Comments: Customer identifies a problem and attempts to resolve it independently.
+
+  Step: Identify Problem
+    User: P-FRUSTRATED
+    Action: Notices application malfunction
+    UI-Element: Application Interface
+    Metrics: {"timeToNoticeProblemMinutes": 5}
+
+  Step: Search Knowledge Base
+    User: P-FRUSTRATED
+    Action: Searches for solutions in the help center
+    UI-Element: Help Center Website
+    Conditional: IF Solution Found THEN Proceed to EVT-RESOLUTION ELSE Proceed to EVT-CONTACT-SUPPORT
+    # This conditional dictates the next event based on self-service success.
+
+# --- Event 2: Contacting Support ---
+Event: Contacting Support
+  ID: EVT-CONTACT-SUPPORT
+  Tag: SupportChannel, Escalation
+  Disruption: Long wait times on phone, Chatbot not understanding query.
+  Comments: Customer decides to contact support after self-service failure.
+
+  Step: Choose Contact Method
+    User: P-FRUSTRATED
+    Action: Selects preferred support channel (e.g., chat, phone)
+    UI-Element: Support Page
+    Conditional: IF User selects 'Chat' THEN Initiate Chat ELSE IF User selects 'Phone' THEN Initiate Call ELSE Display Error
+
+  Step: Initiate Chat
+    User: P-FRUSTRATED
+    Action: Types initial query into chat window
+    UI-Element: Chat Widget
+    ID: STEP-INIT-CHAT
+
+  Step: Initiate Call
+    User: P-FRUSTRATED
+    Action: Dials support hotline
+    UI-Element: Phone Dialer
+    ID: STEP-INIT-CALL
+
+# --- Event 3: Agent Interaction & Resolution Attempt ---
+Event: Agent Interaction & Resolution Attempt
+  ID: EVT-AGENT-INTERACT
+  Tag: AgentAssisted, Resolution
+  Parallel-Events: EVT-CONTACT-SUPPORT # This event runs concurrently with the contact process.
+  Comments: The core interaction with a support agent.
+
+  Step: Receive Customer Query (Agent)
+    User: P-AGENT
+    Action: Reads/listens to customer's problem description
+    UI-Element: CRM System, Phone Headset
+    Ref: STEP-INIT-CHAT, STEP-INIT-CALL # Agent's action is triggered by customer's initiation.
+
+  Step: Diagnose Issue
+    User: P-AGENT
+    Action: Asks clarifying questions and performs initial diagnostics
+    UI-Element: CRM System, Diagnostic Tools
+    Metrics: {"diagnosticTimeMinutes": 5, "initialResolutionRate": 0.7}
+
+  Step: Provide Solution
+    User: P-AGENT
+    Action: Offers a solution or workaround
+    UI-Element: CRM System, Communication Channel
+    Conditional: IF Solution Accepted THEN Mark as Resolved ELSE Request Escalation
+    # Conditional determines if the issue is resolved or needs escalation.
+
+  # --- Persona (Inline): Relieved Customer ---
+  Persona: Relieved Customer
+    Persona: P-FRUSTRATED
+    Experience: Feels heard and hopeful for a resolution.
+    Interaction: Cooperates fully with the agent's instructions.
+    Metrics: {"currentFrustrationLevel": 3, "trustInSupport": "Increased"}
+    Comments: Customer's state after receiving a potential solution.
+
+# --- Event 4: Escalation (Optional) ---
+Event: Escalation
+  ID: EVT-ESCALATE
+  Tag: Escalation, Tier2
+  Comments: This event occurs if the Tier 1 agent cannot resolve the issue.
+
+  Step: Escalate to Tier 2
+    User: P-AGENT
+    Action: Transfers case to a specialized support team
+    UI-Element: CRM System
+    Ref: EVT-AGENT-INTERACT # Triggered from the previous event's conditional.
+
+  Step: Tier 2 Agent Takes Over
+    User: Tier 2 Agent # A new persona could be defined or referenced here.
+    Action: Reviews case history and contacts customer
+    UI-Element: CRM System, Communication Channel
