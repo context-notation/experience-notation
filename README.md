@@ -3,7 +3,7 @@
 
 **Structured User Journey Definition for Design, Analysis, and Simulation**
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 ![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen)
 ![EBNF](https://img.shields.io/badge/EBNF-Supported-blue)
 ![JSON Schema](https://img.shields.io/badge/JSON--Schema-Draft%202020--12-lightgrey)
@@ -158,4 +158,64 @@ See the `LICENSE` file for the full text.
 For questions, support, or to report issues, please use the **GitHub Issues** section of this repository.
 
 ---
+
+To properly include citations in your GitHub repository, follow these best practices:
+
+---
+
+### ✅ 1. **Add a `CITATION.cff` File (for GitHub’s citation support)**
+
+GitHub supports citations natively using the `CITATION.cff` file at the root of your repo. This enables an automatic “Cite this repository” button.
+
+Create a file named `CITATION.cff` in the root of your repository with the following content:
+
+```yaml
+cff-version: 1.2.0
+message: "If you use Experience Notation in your research, please cite the following:"
+title: "Experience Notation"
+version: "1.1.0"
+doi: "10.5281/zenodo.1234567"  # Optional – if you register with Zenodo
+date-released: 2025-07-27
+authors:
+  - family-names: Maniatis
+    given-names: Nikolaos
+    affiliation: The Cato Bot Company Limited
+license: Apache-2.0
+url: https://github.com/context-notation/experience-notation
+repository-code: https://github.com/context-notation/experience-notation
+```
+
+> 🔸**Tip**: If you want to mint a DOI, connect your GitHub repo to [Zenodo](https://zenodo.org/) and update the DOI field accordingly.
+
+---
+
+### ✅ 2. **Add Citation Section to `README.md`**
+
+Paste this under a `## Citation` heading in your `README.md`:
+
+````markdown
+## Citation
+
+If you use the Experience Notation DSL in academic work, please cite:
+
+**Nikolaos Maniatis.** *Experience Notation (v1.1.0)*.  
+https://schemas.experience-notation.com/experience-notation.schema@v1.1.0  
+Available at: https://github.com/context-notation/experience-notation  
+Licensed under Apache 2.0. Maintained by The Cato Bot Company Limited.
+
+**APA:**  
+Maniatis, N. (2025). *Experience Notation (v1.1.0)*. https://github.com/context-notation/experience-notation
+
+**BibTeX:**
+```bibtex
+@misc{maniatis2025experience,
+  author       = {Nikolaos Maniatis},
+  title        = {Experience Notation (v1.1.0)},
+  year         = {2025},
+  howpublished = {\url{https://github.com/context-notation/experience-notation}},
+  note         = {Available at: https://schemas.experience-notation.com/experience-notation.schema@v1.1.0. Licensed under Apache 2.0. Maintained by The Cato Bot Company Limited.}
+}
+```
+
+
 
