@@ -1,4 +1,4 @@
-# Experience Notation (.xnote)
+# Experience Notation (.expn)
 
 **Experience Notation** is a structured language for modelling user journeys, decisions, personas, and interactions in a readable and simulation-ready format. It is designed for LLM prompting, human authoring, and machine parsing. Originally developed as part of the [Demoscope.ai](https://demoscope.ai) platform — a commercial service for synthetic user feedback — it is now available as an open-source specification.
 
@@ -20,7 +20,7 @@ Explore the full [Glossary](https://experience-notation.com/reference/glossary/)
 
 ## Example
 
-```xnote
+```expn
 Journey: simple-onboarding
 Title: Simple Onboarding Journey
 Personas:
@@ -51,7 +51,7 @@ Events:
 ## Learn More
 
 * Full documentation at: [https://experience-notation.com](https://experience-notation.com)
-* Getting started: [Getting Started Guide](https://experience-notation.com/getting-started/what-is-xnote/)
+* Getting started: [Getting Started Guide](https://experience-notation.com/getting-started/what-is-expn/)
 * Browse examples: [`examples/`](./examples)
 * Learn to validate: [Validation Guide](https://experience-notation.com/spec/validation/)
 * Use with LLMs: [AI Integration](https://experience-notation.com/ai/structured-prompting/)
@@ -60,7 +60,7 @@ Events:
 
 ## In Practice
 
-Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial platform for synthetic user feedback and behaviour simulation. `.xnote` files are used to structure multi-step journeys and guide persona interactions in production environments.
+Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial platform for synthetic user feedback and behaviour simulation. `.expn` files are used to structure multi-step journeys and guide persona interactions in production environments.
 
 ---
 
@@ -69,7 +69,7 @@ Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial pl
 * [EBNF Syntax](./spec/Experience-Notation.ebnf)
 * [JSON Schema](./spec/experience-notation.schema.json)
 
-You can validate `.xnote` files using:
+You can validate `.expn` files using:
 
 * `$schema` field in supported editors
 * `ajv-cli` for JSON structure validation
@@ -93,7 +93,7 @@ Maniatis, N. (2025). *Experience Notation Schema (v1.1)*. [https://github.com/co
 
 ## Roadmap
 
-* [ ] Bidirectional JSON ↔ `.xnote` parser
+* [ ] Bidirectional JSON ↔ `.expn` parser
 * [ ] EBNF validation and linting tool
 * [ ] Web-based editor / playground
 * [ ] SDKs and developer tools
