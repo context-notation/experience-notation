@@ -10,7 +10,7 @@ Journey-Description: A journey where a user updates their profile, referencing a
 # --- Global Persona: Existing Customer ---
 # This persona's full details (experience, interaction, metrics, etc.) are assumed
 # to be managed at the specified external URI. The 'Persona:' line here provides a
-# local name/identifier for use within this xnote document.
+# local name/identifier for use within this expn document.
 Persona: Existing Customer
   ID: P-EXT-CUST
   External-Source: https://my-company.com/personas/existing-customer-v2.json

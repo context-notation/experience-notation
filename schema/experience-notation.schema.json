@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/schemas/experience-notation-journey.json",
   "title": "Experience Notation Document",
-  "description": "A structured journey definition using the Experience Notation (xnote) format, conforming to EBNF Version 1.1 and JSON Schema Draft 2020-12.",
+  "description": "A structured journey definition using the Experience Notation (expn) format, conforming to EBNF Version 1.1 and JSON Schema Draft 2020-12.",
   "type": "object",
   "properties": {
     "ebnfVersion": {

@@ -1,6 +1,6 @@
-# Experience Notation (xnote) Examples
+# Experience Notation (expn) Examples
 
-This directory contains a collection of `.xnote` files that demonstrate various features and use cases of the **Experience Notation DSL**. These examples are designed to help you understand the syntax, structure, and capabilities of xnote, serving as practical guides for creating your own journey documents.
+This directory contains a collection of `.expn` files that demonstrate various features and use cases of the **Experience Notation DSL**. These examples are designed to help you understand the syntax, structure, and capabilities of expn, serving as practical guides for creating your own journey documents.
 
 Each example file is commented to explain its specific purpose and the DSL elements it showcases.
 
@@ -12,7 +12,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 1. [`simple-onboarding-journey.xnote`](simple-onboarding-journey.xnote)
+### 1. [`simple-onboarding-journey.expn`](simple-onboarding-journey.expn)
 
 * **Purpose**: Introduces the fundamental structure of an Experience Notation document.
 * **Features Demonstrated**:
@@ -21,11 +21,11 @@ Below is a summary of the example files provided and what each demonstrates:
   * `Event` definition and sequential `Step`s
   * `User`, `Action`, and `UI-Element`
   * Simple inline `Persona`
-* **Learn**: The core building blocks of any xnote journey.
+* **Learn**: The core building blocks of any expn journey.
 
 ---
 
-### 2. [`user-decision-flow.xnote`](user-decision-flow.xnote)
+### 2. [`user-decision-flow.expn`](user-decision-flow.expn)
 
 * **Purpose**: Illustrates how to incorporate conditional branching within a step.
 * **Features Demonstrated**:
@@ -35,7 +35,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 3. [`persona-showcase-journey.xnote`](persona-showcase-journey.xnote)
+### 3. [`persona-showcase-journey.expn`](persona-showcase-journey.expn)
 
 * **Purpose**: Highlights the flexibility of persona definitions.
 * **Features Demonstrated**:
@@ -46,7 +46,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 4. [`external-persona-linking.xnote`](external-persona-linking.xnote)
+### 4. [`external-persona-linking.expn`](external-persona-linking.expn)
 
 * **Purpose**: Demonstrates how to link persona definitions from external URIs.
 * **Features Demonstrated**:
@@ -56,7 +56,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 5. [`data-rich-journey.xnote`](data-rich-journey.xnote)
+### 5. [`data-rich-journey.expn`](data-rich-journey.expn)
 
 * **Purpose**: Shows how to embed quantifiable data.
 * **Features Demonstrated**:
@@ -67,7 +67,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 6. [`contextual-journey.xnote`](contextual-journey.xnote)
+### 6. [`contextual-journey.expn`](contextual-journey.expn)
 
 * **Purpose**: Adds environmental and disruption data to events.
 * **Features Demonstrated**:
@@ -78,7 +78,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 7. [`modular-journey-with-refs.xnote`](modular-journey-with-refs.xnote)
+### 7. [`modular-journey-with-refs.expn`](modular-journey-with-refs.expn)
 
 * **Purpose**: Demonstrates modularity and internal linking.
 * **Features Demonstrated**:
@@ -89,7 +89,7 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ---
 
-### 8. [`comprehensive-customer-support-journey.xnote`](comprehensive-customer-support-journey.xnote)
+### 8. [`comprehensive-customer-support-journey.expn`](comprehensive-customer-support-journey.expn)
 
 * **Purpose**: A comprehensive example combining multiple DSL features.
 * **Features Demonstrated**:
@@ -104,11 +104,11 @@ Below is a summary of the example files provided and what each demonstrates:
 
 ## How to Use These Examples
 
-* **Read the `.xnote` files**
+* **Read the `.expn` files**
   Open each file in a plain text editor. Pay close attention to the inline comments (`#`), which explain the structure and purpose of each section.
 
 * **Validate against the schema**
-  Once your parser or converter libraries are in place, convert the `.xnote` files to JSON and validate them against the `experience-notation.schema.json` located in the `schema/` directory.
+  Once your parser or converter libraries are in place, convert the `.expn` files to JSON and validate them against the `experience-notation.schema.json` located in the `schema/` directory.
 
 * **Experiment and extend**
   Modify the examples to explore how changes affect the structure and to deepen your understanding of the DSL.

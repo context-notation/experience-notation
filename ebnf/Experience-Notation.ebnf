@@ -108,7 +108,7 @@ reference           = "Ref:" , wsp , identifier , nl ;
 # ----- EXTERNAL REFERENCES --------------------------------
 external_source_line = "External-Source:" , wsp , text , nl ;
 # Specifies an external URI or identifier for a persona definition.
-# This allows linking to persona data managed outside the current .xnote document.
+# This allows linking to persona data managed outside the current .expn document.
 
 # ----- GLOBAL PERSONAS ------------------------------------
 persona_global      = "Persona:" , wsp , text , nl ,
