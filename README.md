@@ -58,13 +58,13 @@ Events:
 
 ---
 
-## In Practice
+## In Use
 
 Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial platform for synthetic user feedback and behaviour simulation. `.expn` files are used to structure multi-step journeys and guide persona interactions in production environments.
 
 ---
 
-## Schema & Grammar
+## Grammar & Schema
 
 * [EBNF Syntax](./spec/Experience-Notation.ebnf)
 * [JSON Schema](./spec/experience-notation.schema.json)
