@@ -1,5 +1,10 @@
 # Experience Notation (.expn)
 
+![Open DSL](https://img.shields.io/badge/DSL-open-4c1.svg)
+![Grammar EBNF](https://img.shields.io/badge/grammar-EBNF-informational.svg)
+![Apache 2.0](https://img.shields.io/badge/licence-Apache%202.0-blue.svg)
+![Pygments Lexer](https://img.shields.io/badge/syntax%20highlighting-pygments-orange.svg)
+
 **Experience Notation** is a structured language for modelling user journeys, decisions, personas, and interactions in a readable and simulation-ready format. It is designed for LLM prompting, human authoring, and machine parsing. Originally developed as part of the [Demoscope.ai](https://demoscope.ai) platform — a commercial service for synthetic user feedback — it is now available as an open-source specification.
 
 ---
@@ -60,7 +65,7 @@ Events:
 
 ## In Use
 
-Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial platform for synthetic user feedback and behaviour simulation. `.expn` files are used to structure multi-step journeys and guide persona interactions in production environments.
+Experience Notation powers [Demoscope.ai](https://demoscope.ai), a commercial platform for synthetic user feedback and behavioural simulation. `.expn` files are used to structure multi-step journeys and guide persona interactions in production environments.
 
 ---
 
@@ -100,29 +105,27 @@ Maniatis, N. (2025). *Experience Notation Schema (v1.1)*. [https://github.com/co
 
 ---
 
-## Contributing
-
-We welcome contributions from the community! Whether you're reporting a bug or suggesting a feature your input is greatly appreciated.
-
-📣 [GitHub Discussions](https://github.com/context-notation/experience-notation/discussions)
-
----
-
 ## Licence
 
 The Experience Notation DSL and its accompanying JSON Schema are released under the **Apache 2.0 Licence**.
 
-See the `LICENSE` file for the full text.
+See the [`LICENSE`](LICENSE) file for the full text.
 
 ---
 
-### Maintainer
+## Support & Collaboration
 
-The schema was authored by **Nikolaos Maniatis** and is maintained and distributed by **The Cato Bot Company Limited**.
+Experience Notation was authored by **Nikolaos Maniatis** and is maintained by **The Cato Bot Company Limited** as part of the [Context Notation](https://context-notation.com) initiative.
 
-For questions, support, or to report issues, please use the **[GitHub Issues](https://github.com/context-notation/experience-notation-schema/issues/new)** section of this repository.
+For questions about:
+- Using Experience Notation in your projects
+- Contributing to development
+- Research collaborations  
+- Commercial support options
 
-For commercial enquiries, long-term support, or integration partnerships, please contact:
-📧 **[hi@iamcatobot.me](mailto:hi@iamcatobot.me)**
+Feel free to reach out:
 
+📧 [hello@context-notation.com](mailto:hello@context-notation.com)  
+💬 [GitHub Discussions](https://github.com/context-notation/experience-notation/discussions)  
+🌐 [context-notation.com](https://context-notation.com)
 ---
