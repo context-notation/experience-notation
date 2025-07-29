@@ -82,20 +82,6 @@ You can validate `.expn` files using:
 
 ---
 
-## Citation
-
-If you use Experience Notation in academic work, please cite:
-
-**Nikolaos Maniatis.** *Experience Notation Schema (v1.1)*.
-[https://schemas.experience-notation.com/experience-notation.schema@v1.1](https://schemas.experience-notation.com/experience-notation.schema@v1.1)
-Available at: [https://github.com/context-notation/experience-notation](https://github.com/context-notation/experience-notation)
-Licensed under Apache 2.0. Maintained by The Cato Bot Company Limited.
-
-**APA:**
-Maniatis, N. (2025). *Experience Notation Schema (v1.1)*. [https://github.com/context-notation/experience-notation](https://github.com/context-notation/experience-notation)
-
----
-
 ## Roadmap
 
 * [ ] Bidirectional JSON ↔ `.expn` parser
@@ -124,8 +110,22 @@ For questions about:
 - Commercial support options
 
 Feel free to reach out:
-
 📧 [hello@context-notation.com](mailto:hello@context-notation.com)  
 💬 [GitHub Discussions](https://github.com/context-notation/experience-notation/discussions)  
 🌐 [context-notation.com](https://context-notation.com)
+
+---
+
+## Citation
+
+If you use Experience Notation in academic work, please cite:
+
+**Nikolaos Maniatis.** *Experience Notation Schema (v1.1)*.
+[https://schemas.experience-notation.com/experience-notation.schema@v1.1](https://schemas.experience-notation.com/experience-notation.schema@v1.1)
+Available at: [https://github.com/context-notation/experience-notation](https://github.com/context-notation/experience-notation)
+Licensed under Apache 2.0. Maintained by The Cato Bot Company Limited.
+
+**APA:**
+Maniatis, N. (2025). *Experience Notation Schema (v1.1)*. [https://github.com/context-notation/experience-notation](https://github.com/context-notation/experience-notation)
+
 ---
