@@ -1,6 +1,6 @@
 # Experience Notation JSON Schema
 
-This directory contains the **official JSON Schema** for Experience Notation (`.xnote`) documents. The schema is critical for ensuring the structural correctness of your Experience Notation files and for enabling robust integration with development tools.
+This directory contains the **official JSON Schema** for Experience Notation (`.expn`) documents. The schema is critical for ensuring the structural correctness of your Experience Notation files and for enabling robust integration with development tools.
 
 ---
 
@@ -14,7 +14,7 @@ This directory contains the **official JSON Schema** for Experience Notation (`.
 
 The JSON Schema serves several key purposes:
 
-* **Validation**: Defines the precise structure, data types, and constraints for valid Experience Notation documents. This allows you to programmatically validate `.xnote` files (once converted to JSON) to ensure they comply with the DSL's rules.
+* **Validation**: Defines the precise structure, data types, and constraints for valid Experience Notation documents. This allows you to programmatically validate `.expn` files (once converted to JSON) to ensure they comply with the DSL's rules.
 * **IDE Auto-completion & Real-time Validation**: Many Integrated Development Environments (IDEs) and text editors can leverage JSON Schemas to provide intelligent auto-completion, syntax highlighting, and real-time validation as you edit JSON.
 * **Code Generation**: In advanced use cases, the schema can be used to automatically generate data models or interfaces in various programming languages, streamlining the development of parsers, converters, and applications that interact with Experience Notation data.
 * **Documentation**: The schema itself acts as formal, machine-readable documentation of the Experience Notation data structure.
@@ -25,7 +25,7 @@ The JSON Schema serves several key purposes:
 
 ### 1. Validating Experience Notation Documents (as JSON)
 
-Once you have converted an `.xnote` script into its JSON representation (handled by the official parser/converter libraries), you can validate that JSON against the schema.
+Once you have converted an `.expn` script into its JSON representation (handled by the official parser/converter libraries), you can validate that JSON against the schema.
 
 #### a) JavaScript (using Ajv)
 
@@ -48,7 +48,7 @@ const schema = require('./experience-notation.schema.json');
 const validate = ajv.compile(schema);
 
 // Your Experience Notation document as a JSON object
-const xnoteDocument = {
+const expnDocument = {
   "ebnfVersion": "1.1", 
   "syntaxVersion": "1.0",
   "journeyTitle": "Simple User Onboarding",
@@ -82,7 +82,7 @@ const xnoteDocument = {
   ]
 };
 
-const isValid = validate(xnoteDocument);
+const isValid = validate(expnDocument);
 
 if (isValid) {
   console.log("Experience Notation document is valid!");
@@ -111,7 +111,7 @@ with open('experience-notation.schema.json', 'r') as f:
     schema = json.load(f)
 
 # Your Experience Notation document as a Python dictionary
-xnote_document = {
+expn_document = {
     "ebnfVersion": "1.1",  # Updated EBNF Version
     "syntaxVersion": "1.0",
     "journeyTitle": "Simple User Onboarding",
@@ -146,7 +146,7 @@ xnote_document = {
 }
 
 try:
-    validate(instance=xnote_document, schema=schema)
+    validate(instance=expn_document, schema=schema)
     print("Experience Notation document is valid!")
 except ValidationError as e:
     print("Experience Notation document is NOT valid:")
@@ -161,7 +161,7 @@ Many modern IDEs and text editors provide built-in or plugin-based support for J
 
 #### VS Code
 
-VS Code has excellent built-in support for JSON Schema. You can associate the `experience-notation.schema.json` file with your JSON files (e.g., `.xnote.json`) by adding a `$schema` property to the root of your JSON document:
+VS Code has excellent built-in support for JSON Schema. You can associate the `experience-notation.schema.json` file with your JSON files (e.g., `.expn.json`) by adding a `$schema` property to the root of your JSON document:
 
 ```json
 {
@@ -179,7 +179,7 @@ Alternatively, you can configure VS Code’s `settings.json` to apply the schema
 {
   "json.schemas": [
     {
-      "fileMatch": ["*.xnote.json"],
+      "fileMatch": ["*.expn.json"],
       "url": "./schema/experience-notation.schema.json"
     }
   ]

@@ -110,6 +110,7 @@ For questions about:
 - Commercial support options
 
 Feel free to reach out:
+
 📧 [hello@context-notation.com](mailto:hello@context-notation.com)  
 💬 [GitHub Discussions](https://github.com/context-notation/experience-notation/discussions)  
 🌐 [context-notation.com](https://context-notation.com)
@@ -127,5 +128,4 @@ Licensed under Apache 2.0. Maintained by The Cato Bot Company Limited.
 
 **APA:**
 Maniatis, N. (2025). *Experience Notation Schema (v1.1)*. [https://github.com/context-notation/experience-notation](https://github.com/context-notation/experience-notation)
-
 ---
